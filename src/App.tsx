@@ -4,21 +4,27 @@ import {Todolist} from './Todolist';
 
 function App() {
 
-    const tasks1 = [
-        { id: 1, title: "HTML&CSS", isDone: true },
-        { id: 2, title: "JS", isDone: true },
-        { id: 3, title: "ReactJS", isDone: false }
+
+
+    let tasks = [
+        {id: 1, title: "HTML&CSS", isDone: true},
+        {id: 2, title: "JS", isDone: true},
+        {id: 3, title: "ReactJS", isDone: false},
+        {id: 4, title: "Redux", isDone: true}
     ]
-    const tasks2 = [
-        { id: 1, title: "Hello world", isDone: true },
-        { id: 2, title: "I am Happy", isDone: false },
-        { id: 3, title: "Yo", isDone: false }
-    ]
+
+    function removeTasks(Id: number) {
+        tasks = tasks.filter(t => t.id !== Id)
+        console.log(tasks)
+    }
 
     return (
         <div className="App">
-            <Todolist title="What to learn" tasks={tasks1} />
-            <Todolist title="Songs" tasks={tasks2} />
+            <Todolist
+                title="What to learn"
+                tasks={tasks}
+                removeTasks={removeTasks}
+            />
         </div>
     );
 }
